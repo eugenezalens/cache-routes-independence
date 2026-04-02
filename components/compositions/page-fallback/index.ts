@@ -1,0 +1,5 @@
+export { PageFallback, type TPageFallbackProps } from './components/page-fallback'
+export { PageFallbackHeader, type TPageFallbackHeaderProps } from './components/page-fallback-header'
+export { PageFallbackTitle, type TPageFallbackTitleProps } from './components/page-fallback-title'
+export { PageFallbackDescription, type TPageFallbackDescriptionProps } from './components/page-fallback-description'
+export { PageFallbackFooter, type TPageFallbackFooterProps } from './components/page-fallback-footer'

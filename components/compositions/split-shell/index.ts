@@ -1,0 +1,7 @@
+export { SplitShell, type TSplitShellProps } from './components/split-shell'
+export { SplitShellTitle, type TSplitShellTitleProps } from './components/split-shell-title'
+export { SplitShellBody, type TSplitShellBodyProps } from './components/split-shell-body'
+export { SplitShellSection, type TSplitShellSectionProps } from './components/split-shell-section'
+export { SplitShellSectionHeader, type TSplitShellSectionHeaderProps } from './components/split-shell-section-header'
+export { SplitShellSectionTitle, type TSplitShellSectionTitleProps } from './components/split-shell-section-title'
+export { SplitShellSectionFooter, type TSplitShellSectionFooterProps } from './components/split-shell-section-footer'

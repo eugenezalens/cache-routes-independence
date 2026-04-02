@@ -1,0 +1,152 @@
+/**
+ * ============================================================
+ * DESIGN SYSTEM – THEME TOKENS
+ * ============================================================
+ *
+ * Philosophy:
+ * - Dark, cold, enterprise-grade UI
+ * - No pure black, no pure white
+ * - Depth is expressed via elevation (shadows), not heavy borders
+ * - Visual hierarchy is created by tone, not contrast jumps
+ *
+ * Architecture (The 2-Layer Model):
+ * 1. :root -> Primitives. The absolute source of truth (HEX, REMs). No logic.
+ * 2. @theme -> Semantics. Tailwind API. Defines HOW and WHERE primitives are used.
+ *
+ * Mental Model: Spatial UI (Z-axis)
+ * - 'surface': Physical layers (canvas, platforms, inset wells)
+ * - 'content': Information placed ON those surfaces (text, icons)
+ * ============================================================ */
+
+/* ============================================================
+ * 1. ROOT TOKENS (Primitives / The Palette)
+ * ============================================================ */
+:root {
+  /* --- Color Palette (HEX only, no alpha channels) --- */
+
+  /* Slate Scale (Cool darks with blue undertone) */
+  --palette-slate-950: #080e1a; /* Deepest / Header / Shadows */
+  --palette-slate-900: #141821; /* App background */
+  --palette-slate-850: #1b2030; /* Subtle / Nested */
+  --palette-slate-800: #1f2538; /* Raised / Cards */
+  --palette-slate-775: #22293d; /* Raised / Cards (slightly brighter) */
+  --palette-slate-700: #343b52; /* Borders */
+  --palette-slate-650: #404862; /* Primary dividers */
+
+  /* Text Scale */
+  --palette-gray-50: #e6e8ec; /* Primary readable */
+  --palette-gray-400: #9ca2ae; /* Secondary / Labels */
+  --palette-gray-500: #6f7787; /* Muted / Disabled */
+
+  /* Brand / Primary Scale (Confident Blue) */
+  --palette-blue-500: #3a7be6; /* Hover */
+  --palette-blue-600: #2f6fdb; /* Base */
+  --palette-blue-700: #255fc0; /* Active */
+
+  /* Feedback / Error Scale (Cool coral, tuned for dark surfaces) */
+  --palette-coral-500: #f27d86; /* Readable emphasis on dark UI */
+  --palette-white: #ffffff; /* Contrast ink */
+
+  /* --- Scales (Math & Geometry) --- */
+
+  /* Spacing Scale (4px baseline) */
+  --space-xs: 0.25rem; /* 4px */
+  --space-sm: 0.5rem; /* 8px */
+  --space-md: 1rem; /* 16px */
+  --space-lg: 1.5rem; /* 24px */
+  --space-xl: 2rem; /* 32px */
+
+  /* Radius Scale (Subtle rounding) */
+  --radius-xs: 0.125rem; /* 2px */
+  --radius-sm: 0.25rem; /* 4px */
+  --radius-md: 0.5rem; /* 8px */
+  --radius-lg: 0.75rem; /* 12px */
+  --radius-xl: 1rem; /* 16px */
+
+  /* Component Specs */
+  --comp-scrollbar-size: 0.5rem;
+  --comp-scrollbar-radius: 999rem;
+}
+
+/* ============================================================
+ * 2. THEME MAPPING (Semantic Layer for Tailwind v4)
+ * ============================================================ */
+@theme {
+  /* ----------------------------------------------------------
+   * SURFACES (The Physical Layers / Z-axis)
+   * Back -> Front layering:
+   * L0  : surface-sunken (deep, unique chrome: header-like areas)
+   * L1  : surface-base (main app canvas)
+   * L2  : surface-raised (cards, sidebars, primary platforms)
+   * L1.5: surface-subtle (inset well inside raised; intentionally darker)
+   * ---------------------------------------------------------- */
+  --color-surface-sunken: var(--palette-slate-950); /* L0: deepest plane */
+  --color-surface-base: var(--palette-slate-900); /* L1: app canvas */
+  --color-surface-subtle: var(--palette-slate-850); /* L1.5: inset in raised */
+  --color-surface-raised: var(--palette-slate-775); /* L2: cards / sidebars */
+
+  /* ----------------------------------------------------------
+   * CONTENT (The Ink / What sits on the surfaces)
+   * ---------------------------------------------------------- */
+  --color-content-primary: var(--palette-gray-50); /* Main text */
+  --color-content-secondary: var(--palette-gray-400); /* Descriptions */
+  --color-content-muted: var(--palette-gray-500); /* Placeholders */
+  --color-content-inverse: var(--palette-white); /* Text on primary buttons */
+
+  /* ----------------------------------------------------------
+   * INTERACTIVE (Brand & Actions)
+   * ---------------------------------------------------------- */
+  --color-primary: var(--palette-blue-600);
+  --color-primary-hover: var(--palette-blue-500);
+  --color-primary-active: var(--palette-blue-700);
+
+  /* ----------------------------------------------------------
+   * FEEDBACK (Validation / System states)
+   * ---------------------------------------------------------- */
+  --color-feedback-error: var(--palette-coral-500);
+
+  /* Focus ring (Using color-mix to add 45% opacity to base HEX) */
+  --color-focus-ring: color-mix(in srgb, var(--palette-blue-600) 45%, transparent);
+
+  /* ----------------------------------------------------------
+   * DIVIDERS & OUTLINES
+   * ---------------------------------------------------------- */
+  --color-divider: var(--palette-slate-650);
+  --color-divider-subtle: var(--palette-slate-700);
+
+  /* ----------------------------------------------------------
+   * ELEVATION (Shadows)
+   * Simulating borders via shadows for crisp rendering
+   * ---------------------------------------------------------- */
+  --shadow-sm:
+    0 0 0 1px color-mix(in srgb, var(--palette-slate-700) 90%, transparent),
+    0 8px 24px color-mix(in srgb, var(--palette-slate-950) 60%, transparent);
+
+  --shadow-md:
+    0 0 0 1px var(--palette-slate-700), 0 0 20px color-mix(in srgb, var(--palette-slate-700) 60%, transparent),
+    0 16px 36px color-mix(in srgb, var(--palette-slate-950) 85%, transparent);
+
+  /* ----------------------------------------------------------
+   * SCALES (Mapping to Tailwind utilities: p-*, m-*, rounded-*)
+   * ---------------------------------------------------------- */
+  --spacing-xs: var(--space-xs);
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+  --spacing-xl: var(--space-xl);
+
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  /* ----------------------------------------------------------
+   * COMPONENTS (Scrollbar)
+   * ---------------------------------------------------------- */
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: color-mix(in srgb, var(--palette-slate-700) 55%, transparent);
+  --scrollbar-thumb-hover: color-mix(in srgb, var(--palette-slate-700) 75%, transparent);
+  --scrollbar-size: var(--comp-scrollbar-size);
+  --scrollbar-radius: var(--comp-scrollbar-radius);
+}

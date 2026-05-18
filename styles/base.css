@@ -1,4 +1,12 @@
 @layer base {
+  :root {
+    --scrollbar-track: transparent;
+    --scrollbar-thumb: color-mix(in srgb, var(--color-divider-subtle) 55%, transparent);
+    --scrollbar-thumb-hover: color-mix(in srgb, var(--color-divider-subtle) 75%, transparent);
+    --scrollbar-size: var(--spacing-sm);
+    --scrollbar-radius: var(--radius-pill);
+  }
+
   /* ------------------------------------------------------------
    * Firefox
    * ------------------------------------------------------------ */

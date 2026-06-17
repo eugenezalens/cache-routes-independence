@@ -2,14 +2,14 @@ import { type ComponentPropsWithoutRef } from 'react'
 
 import { cn } from '@/helpers'
 
-import { userAvatarHelpers } from './user-avatar.helpers'
+import { letterAvatarHelpers } from './letter-avatar.helpers'
 
-export type TUserAvatarProps = {
+export type TLetterAvatarProps = {
   username: string
 } & Omit<ComponentPropsWithoutRef<'span'>, 'children'>
 
-export function UserAvatar({ username, className, ...props }: TUserAvatarProps) {
-  const avatarInitial = userAvatarHelpers.get.initial(username)
+export function LetterAvatar({ username, className, ...props }: TLetterAvatarProps) {
+  const avatarInitial = letterAvatarHelpers.getInitial(username)
 
   return (
     <span

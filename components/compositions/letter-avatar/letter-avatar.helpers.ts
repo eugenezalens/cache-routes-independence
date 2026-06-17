@@ -14,8 +14,6 @@ function getInitial(username?: string): string {
   return '?'
 }
 
-export const userAvatarHelpers = {
-  get: {
-    initial: getInitial,
-  },
+export const letterAvatarHelpers = {
+  getInitial: getInitial,
 }

@@ -1,6 +1,7 @@
 import { type ComponentType } from 'react'
 
 import { Card, CardActions, CardBody, CardHeader, CardTitle } from '@/components/compositions/card'
+import { LetterAvatar } from '@/components/compositions/letter-avatar'
 import {
   DescriptionList,
   DescriptionListGroup,
@@ -12,7 +13,6 @@ import { type TTitleLevel } from '@/components/ui/title'
 
 import { type TOpenUserDetailsActionProps } from './open-user-details-action'
 import { type IUser } from '../models/users.models'
-import { UserAvatar } from './user-avatar/user-avatar'
 
 export type TUserCardProps = {
   titleLevel: TTitleLevel
@@ -32,7 +32,7 @@ export function UserCard({ titleLevel, user, slots, slotProps }: TUserCardProps)
     <Card>
       <CardHeader>
         <div className={'grid grid-cols-[1fr_minmax(0,4fr)_1fr] items-center gap-md'}>
-          <UserAvatar className="justify-items-start" username={user.username} />
+          <LetterAvatar className="justify-items-start" username={user.username} />
 
           <div className="flex flex-col gap-xs">
             <div className="border-b border-divider pb-xs">

@@ -12,6 +12,7 @@ import { Text } from '@/components/ui/text'
 import { type TTitleLevel } from '@/components/ui/title'
 
 import { type TOpenUserDetailsActionProps } from './open-user-details-action'
+import { type TOpenUserEditingActionProps } from './open-user-editing-action'
 import { type IUser } from '../models/users.models'
 
 export type TUserCardProps = {
@@ -19,14 +20,17 @@ export type TUserCardProps = {
   user: IUser
   slots?: {
     openDetailsAction?: ComponentType<TOpenUserDetailsActionProps>
+    openUserEditingAction?: ComponentType<TOpenUserEditingActionProps>
   }
   slotProps?: {
     openDetailsAction?: Omit<TOpenUserDetailsActionProps, 'id'>
+    openUserEditingAction?: Omit<TOpenUserEditingActionProps, 'id'>
   }
 }
 
 export function UserCard({ titleLevel, user, slots, slotProps }: TUserCardProps) {
   const OpenDetailsAction = slots?.openDetailsAction
+  const OpenUserEditingAction = slots?.openUserEditingAction
 
   return (
     <Card>
@@ -47,6 +51,7 @@ export function UserCard({ titleLevel, user, slots, slotProps }: TUserCardProps)
           {slots && (
             <CardActions className="justify-self-end">
               {OpenDetailsAction && <OpenDetailsAction {...slotProps?.openDetailsAction} id={user.id} />}
+              {OpenUserEditingAction && <OpenUserEditingAction {...slotProps?.openUserEditingAction} id={user.id} />}
             </CardActions>
           )}
         </div>
